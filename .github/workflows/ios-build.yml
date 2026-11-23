@@ -1,7 +1,16 @@
 name: Native iOS build and UI test
-on: push: branches: [main] pull_request: branches: [main] workflow_dispatch:
+on:
+ push:
+  branches: [main]
+   pull_request:
+    branches: [main]
+     workflow_dispatch:
 permissions: contents: read
-jobs: build-and-test: name: Build and test on cloud macOS runs-on: macos-26-intel timeout-minutes: 40
+jobs:
+ build-and-test:
+  name: Build and test on cloud macOS
+   runs-on: macos-26-intel
+    timeout-minutes: 40
 steps:
   - name: Check out repository
     uses: actions/checkout@v4
@@ -72,4 +81,3 @@ steps:
       path: build/TestResults.xcresult
       if-no-files-found: warn
       retention-days: 7
-      
